@@ -1,46 +1,41 @@
-# This is a test page
-Is it on yet?
 
-## This is some test code
-This is some PowerShell code.
-```powershell
-function Get-LocalAdmin {
-    param (
-        $strcomputer
-    )
-    
-    $admins = Get-WmiObject win32_groupuser -computer $strcomputer
-    $admins = $admins |Where-Object {$_.groupcomponent -like '*"Administrators"'}
+# A blog by Jack Parker (jubbathejack)
 
-    $admins |ForEach-Object {
-        $_.partcomponent -match ".+Domain\=(.+)\,Name\=(.+)$" > $nul
-        $Matches[1].trim('"') + "\" + $Matches[2].trim('"')
-    }
-}
-```
+Maybe I'll write something for it someday. It would likely be code/IT infrastructure related.
+My current interests include:
+- Ansible automation. Particuarly about how it may be used within enterprise networks.
+- Python. I am self-taught and typically write scripts that make an aspect of my work or life easier.
+- Producing metrics. I like to gather metrics from things around me and typically put them in a prometheus database.
+- Electronics. I am a big fan of micro-electronics. Though my biggest problem is that I seem to have lots of ideas that don't make it past an idea in my head!
 
-And this is some Python code
+## This is some code that will produce a fibonacci number. It was a small project a few years ago.
+The repository with this code can be found [here](https://github.com/jubbathejack/fibonacci_seqence/tree/main).
 ```python
-name = 'Zed A. Shaw'
-age = 35 # not a lie
-height = 74 # inches
-height_cm = height * 2.54 # Converting inches to centimeters
-weight = 180 # lbs
-weight_kg = weight * 0.45359237 # Converting pounds to kilograms
-eyes = 'Blue'
-teeth = 'White'
-hair = 'Brown'
+#!/usr/bin/env python3
 
-print "Let's talk about %r." % name
-print "He's %d inches tall." % height
-print "And that is %d centimeters tall." % height_cm
-print "He's %d pounds heavy." % weight
-print "And that is %d kilograms heavy." % weight_kg
-print "Actually that's not too heavy."
-print "He's got %s eyes and %s hair." % (eyes, hair)
-print "His teeth are usually %s depending on the coffee." % teeth
+x = 0
+y = 1
+seqNum = 2
 
-# this line is tricky, try to get it exactly right
-print "If I add %d, %d, and %d I get %d." % (
-    age, height, weight, age + height + weight)
+rangeTop = input("Please enter how many iterations you want to run: ")
+rangeTop = int(rangeTop)
+
+print("0: " + str(x))
+print("1: " + str(y))
+
+while seqNum <= rangeTop:
+    x = (x + y)
+    print(str(seqNum) + ": " + str(x))
+    seqNum = (seqNum + 1)
+    if seqNum > rangeTop:
+        print("Fibonacci sequence complete.")
+        exit(0)
+    else:
+        pass
+    y = (y + x)
+    print(str(seqNum) + ": " + str(y))
+    seqNum = (seqNum + 1)
+else:
+    print("Fibonacci sequence complete.")
+    exit(0)
 ```
